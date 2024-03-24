@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class DamageScreen : MonoBehaviour
@@ -8,15 +9,12 @@ public class DamageScreen : MonoBehaviour
     [SerializeField] private Image _damageScreenImg;
 
 
-    void Update()
+    public void StartEffect()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            StartCoroutine(ShowDamageEffect());
-        }
-
+        StartCoroutine(ShowDamageEffect());
     }
 
+    
     public IEnumerator ShowDamageEffect()
     {
         _damageScreenImg.enabled = true;

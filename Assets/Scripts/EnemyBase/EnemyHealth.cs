@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int _health;
+    [SerializeField] private int _health;
+    [SerializeField] private UnityEvent _onTakeDamageEvent;
 
     public void TakeDamage(int damage)
     {
@@ -13,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+        _onTakeDamageEvent.Invoke();
 
     }
 
