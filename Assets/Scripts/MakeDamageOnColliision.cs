@@ -5,5 +5,15 @@ using UnityEngine;
 
 public class MakeDamageOnColliision : MonoBehaviour
 {
-    [SerializeField] private int _damage;
+    [SerializeField] private int _damage = 1;
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        if (playerHealth != null )
+        {
+            playerHealth.TakeDamage(_damage);
+        }
+    }
 }
