@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody _rigidBody;
     [SerializeField] float _speed;
+    [SerializeField] float _rotationSpeed;
     [SerializeField] float _friction;
     [SerializeField] float _jumpSpeed;
     [SerializeField] float _maxSpeedX;
     [SerializeField] private Transform _colliderTransform;
+    [SerializeField] private Transform _aim;
     [SerializeField] private float _scaleRate;
     private bool _isGrounded;
 
@@ -33,6 +36,20 @@ public class PlayerMove : MonoBehaviour
         else
         {
             _colliderTransform.localScale = Vector3.Lerp(_colliderTransform.localScale, new Vector3(1, 1, 1), Time.deltaTime * _scaleRate);
+        }
+
+        if (_aim.transform.position.x - transform.position.x > 0.5f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, -45f, 0), _rotationSpeed * Time.deltaTime);
+        }
+        else if(transform.position.x - _aim.transform.position.x > 0.5f)
+        {
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 45f, 0), _rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), _rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -65,7 +82,7 @@ public class PlayerMove : MonoBehaviour
         //    _speedMultiplier = 0;
         //}
 
-        
+
     }
     private void OnCollisionStay(Collision collision)
     {
