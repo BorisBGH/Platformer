@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] Rigidbody _rigidBody;
+    [SerializeField] Transform _playerBodyTransform;
     [SerializeField] float _speed;
     [SerializeField] float _rotationSpeed;
     [SerializeField] float _friction;
@@ -40,16 +41,16 @@ public class PlayerMove : MonoBehaviour
 
         if (_aim.transform.position.x - transform.position.x > 0.5f)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, -45f, 0), _rotationSpeed * Time.deltaTime);
+            _playerBodyTransform.rotation = Quaternion.Lerp(_playerBodyTransform.rotation, Quaternion.Euler(0, -45f, 0), _rotationSpeed * Time.deltaTime);
         }
         else if(transform.position.x - _aim.transform.position.x > 0.5f)
         {
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 45f, 0), _rotationSpeed * Time.deltaTime);
+            _playerBodyTransform.rotation = Quaternion.Lerp(_playerBodyTransform.rotation, Quaternion.Euler(0, 45f, 0), _rotationSpeed * Time.deltaTime);
         }
         else
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), _rotationSpeed * Time.deltaTime);
+            _playerBodyTransform.rotation = Quaternion.Lerp(_playerBodyTransform.rotation, Quaternion.Euler(0, 0, 0), _rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -76,13 +77,7 @@ public class PlayerMove : MonoBehaviour
         {
             _rigidBody.AddForce(-_rigidBody.velocity.x * _friction, 0, 0, ForceMode.VelocityChange);
         }
-
-        //if (Mathf.Abs(_rigidBody.velocity.x) > _maxSpeedX && Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
-        //{
-        //    _speedMultiplier = 0;
-        //}
-
-
+       
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -92,8 +87,7 @@ public class PlayerMove : MonoBehaviour
             _isGrounded = true;
         }
 
-        //Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal * 100, Color.cyan);
-        //Debug.DrawRay(collision.contacts[0].point, Vector3.up * 100, Color.green);
+        
     }
 
     private void OnCollisionExit(Collision collision)

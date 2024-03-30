@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 41569944}
+  _playerBodyTransform: {fileID: 76558753}
   _speed: 5
   _rotationSpeed: 5
   _friction: 0.6

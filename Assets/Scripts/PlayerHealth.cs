@@ -8,11 +8,11 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int _health = 5;
     [SerializeField] private int _maxHealth = 8;
-   // [SerializeField] private AudioSource _takeDamageSound;
+    // [SerializeField] private AudioSource _takeDamageSound;
     [SerializeField] private AudioSource _addHealthSound;
     [SerializeField] private HealthUI _healthUI;
-  //  [SerializeField] private DamageScreen _damageScreen;
-   // [SerializeField] private Blink _blink;
+    //  [SerializeField] private DamageScreen _damageScreen;
+    // [SerializeField] private Blink _blink;
     [SerializeField] private UnityEvent _eventOnTakeDamage;
     private bool _invulnerable;
 
@@ -27,18 +27,15 @@ public class PlayerHealth : MonoBehaviour
         if (!_invulnerable)
         {
             _health -= damage;
-           // _takeDamageSound.Play();
             _healthUI.DisplayHealth(_health);
-           // _damageScreen.StartEffect();
-           // _blink.StartBlink();
-           _eventOnTakeDamage.Invoke();
-            
+            _eventOnTakeDamage.Invoke();
+
             if (_health <= 0)
             {
                 _health = 0;
                 Die();
             }
-          
+
             Invoke(nameof(MakeVulnerable), 1f);
         }
     }
@@ -57,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("U losse");
+        Debug.Log("U lose");
     }
 
     private void MakeVulnerable()

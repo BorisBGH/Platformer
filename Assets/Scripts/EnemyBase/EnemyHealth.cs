@@ -11,11 +11,12 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+        _onTakeDamageEvent.Invoke();
         if (_health <= 0)
         {
             Die();
         }
-        _onTakeDamageEvent.Invoke();
+       
 
     }
 
