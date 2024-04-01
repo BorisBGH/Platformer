@@ -11,11 +11,12 @@ public class Carrot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.rotation = Quaternion.identity;
         _playerTransform = FindObjectOfType<PlayerMove>().transform;
-        _dirToPlayer = (_playerTransform.position - transform.position).normalized; 
+        _dirToPlayer = (_playerTransform.position - transform.position).normalized;
     }
 
- 
+
     private void FixedUpdate()
     {
         _rigidBody.AddForce(_dirToPlayer * _speed, ForceMode.VelocityChange);

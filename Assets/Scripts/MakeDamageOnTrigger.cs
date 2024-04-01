@@ -7,14 +7,19 @@ public class MakeDamageOnTrigger : MonoBehaviour
     [SerializeField] private int _damage = 1;
 
 
-    private void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        PlayerHealth playerHealth = other.attachedRigidbody.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+
+        if (other.attachedRigidbody)
         {
-            playerHealth.TakeDamage(_damage);
+            PlayerHealth playerHealth = other.attachedRigidbody.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(_damage);
+            }
         }
+
     }
 
-    
+
 }

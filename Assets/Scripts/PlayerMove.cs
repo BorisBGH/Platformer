@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
             _rigidBody.AddForce(0, _jumpSpeed, 0, ForceMode.VelocityChange);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.S) || !_isGrounded)
+        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.S) || !_isGrounded)
         {
             _colliderTransform.localScale = Vector3.Lerp(_colliderTransform.localScale, new Vector3(1, 0.5f, 1), Time.deltaTime * _scaleRate);
         }

@@ -7,18 +7,26 @@ public class TakeDamageOnTrigger : MonoBehaviour
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private bool _dieOnAnyTrigger;
 
-   
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Bullet>())
+        if (other != null)
         {
-            _enemyHealth.TakeDamage(1);
+            if (other.gameObject.GetComponent<Bullet>())
+            {
+                _enemyHealth.TakeDamage(1);
+            }
         }
+
 
         if (_dieOnAnyTrigger)
         {
-            _enemyHealth.TakeDamage(10000);
+            if (!other.isTrigger)
+            {
+                _enemyHealth.TakeDamage(10000);
+            }
+
         }
     }
 }
