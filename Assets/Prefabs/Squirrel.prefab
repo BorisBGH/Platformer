@@ -90,6 +90,7 @@ Transform:
   - {fileID: 7448786967035498910}
   - {fileID: 5233049009727269433}
   - {fileID: 2510149529993862626}
+  - {fileID: 2454644843237166936}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6432650035439844699
@@ -111,6 +112,21 @@ MonoBehaviour:
       - m_Target: {fileID: 5990937963005869021}
         m_TargetAssemblyTypeName: Blink, Assembly-CSharp
         m_MethodName: StartBlink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7362789542683913699}
+        m_TargetAssemblyTypeName: PrefabCreator, Assembly-CSharp
+        m_MethodName: Create
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -173,6 +189,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3897000415bec488917acf0829b3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DistanceToActivate: 20
+--- !u!1 &2190526507981229383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2454644843237166936}
+  - component: {fileID: 7362789542683913699}
+  m_Layer: 0
+  m_Name: DieEffectSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2454644843237166936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190526507981229383}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.757, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8714954981618477494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7362789542683913699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190526507981229383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d28463e4dc8ccf4481a1f12fe93422e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pref: {fileID: 710983010421102068, guid: 4a55f562210d9874fa7cf78db989929e, type: 3}
+  _spawn: {fileID: 2454644843237166936}
 --- !u!1 &4376658014453524426
 GameObject:
   m_ObjectHideFlags: 0

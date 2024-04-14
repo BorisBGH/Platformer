@@ -7,7 +7,7 @@ public class PrefabCreator : MonoBehaviour
     [SerializeField] private GameObject _pref;
     [SerializeField] private Transform _spawn;
 
-    private void Create()
+    public void Create()
     {
         Instantiate(_pref, _spawn.position, _spawn.rotation);
     }
